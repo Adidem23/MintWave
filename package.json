@@ -9,16 +9,25 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@nextui-org/react": "^2.1.13",
+    "@polybase/client": "^0.6.6",
+    "@splinetool/react-spline": "^2.2.6",
+    "@thirdweb-dev/react": "^3.15.0",
+    "atropos": "^2.0.2",
+    "canvas-confetti": "^1.6.0",
+    "ethers": "^5.7.2",
+    "next": "latest",
     "react": "latest",
+    "react-dark-mode-toggle": "^0.2.0",
     "react-dom": "latest",
-    "next": "latest"
+    "react-jazzicon": "^1.0.4"
   },
   "devDependencies": {
-    "typescript": "latest",
-    "@types/react": "latest",
     "@types/node": "latest",
+    "@types/react": "latest",
     "@types/react-dom": "latest",
     "eslint": "latest",
-    "eslint-config-next": "latest"
+    "eslint-config-next": "latest",
+    "typescript": "latest"
   }
 }
