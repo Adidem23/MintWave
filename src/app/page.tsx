@@ -1,6 +1,6 @@
 "use client";
 import MainRender from "./Components/MainRender";
-import { ThirdwebProvider, paperWallet, ThirdwebSDKProvider } from "@thirdweb-dev/react";
+import { ThirdwebProvider , ThirdwebSDKProvider } from "@thirdweb-dev/react";
 import { ThemeProvider } from "./Components/Context";
 import { ethers } from "ethers";
 

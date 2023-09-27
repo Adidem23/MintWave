@@ -5,6 +5,7 @@ import { useTheme } from './Context'
 import { useState } from 'react'
 import { ethers } from 'ethers'
 import { ThirdwebSDK, useContract } from '@thirdweb-dev/react'
+import { Polybase } from "@polybase/client";
 
 
 
@@ -17,6 +18,23 @@ const MintPage = () => {
     const [ClickedForImage, setClickedForImage] = useState(false)
     const [Account, setAccount] = useState("")
     const { contract } = useContract("0x78F457B69847D2E74907bb6e18EDcB14c8dfd319");
+
+    const db = new Polybase({
+        defaultNamespace: "pk/0x8254b18dfc0d06b3269b13bbfbfacde20d4f988c67f9c4d32eed0d9955e6483b14aa99e1e410b4253dff71e64aa1c062b3edf6e1f2a638f0d37df732f65d8dcf/AdityaDapp",
+    });
+
+    const collectionReference = db.collection("User");
+
+
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth() + 1;
+    const day = currentDate.getDate();
+    const hours = currentDate.getHours();
+    const minutes = currentDate.getMinutes();
+    const seconds = currentDate.getSeconds();
+    const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+
 
 
     const HandleFile = async (event: any) => {
@@ -47,10 +65,7 @@ const MintPage = () => {
     }
     ConnectToMetamask();
 
-    const MintGivenNFT = async () => {
-
-        setClickedForImage(false);
-
+    const ListNFt = async () => {
         const providers = new ethers.providers.Web3Provider(window.ethereum);
         const Signers = new ethers.Wallet("5ad7f7823ac4a9518b1ce47b007c63c150bc31382d6878d48cce4abb2cc707ef", providers);
 
@@ -67,22 +82,28 @@ const MintPage = () => {
         }
 
         const transaction = await contract!.erc721.mintTo(Account!, metadata);
-        console.log(transaction)
+        const tokenId = transaction.id;
+        const nft = await transaction.data();
+        const RecordData = await collectionReference.create([nft.metadata.id.toString(), nft.metadata.name!, nft.metadata.description!, nft.metadata.uri!, nft.owner!, formattedDate.toString()]);
+        console.log(RecordData);
+    }
+
+
+    const MintGivenNFT = async () => {
+        setClickedForImage(false);
+        await ListNFt();
+
     }
 
     const { isDarkMode } = useTheme();
 
-    // if (isDarkMode) {
-    //     const bodycard = document.querySelectorAll('.carddiv');
-    //     bodycard.forEach((carder) => {
-    //         carder.style.backgroundColor = "#B9B4C7"
-    //     })
-    // } else {
-    //     const bodycard = document.querySelectorAll('.carddiv');
-    //     bodycard.forEach((carder) => {
-    //         carder.style.backgroundColor = "#ffffff"
-    //     })
-    // }
+    if (isDarkMode) {
+        const innerdivs = document.getElementById('divi');
+        innerdivs!.style.backgroundColor = "#B9B4C7"
+        const uploaddiv = document.getElementById('upload');
+        uploaddiv!.style.backgroundColor = "#B9B4C7"
+    }
+
 
 
     return (
@@ -103,15 +124,13 @@ const MintPage = () => {
                                 <span className="card-side1"></span>
 
                                 <div className="flip-card__inner1"  >
-                                    <div className="flip-card__front1 carddiv">
+                                    <div className="flip-card__front1 carddiv" id='divi'>
                                         <div className="title1">Enter Metedata</div>
                                         <form className="flip-card__form1" action="">
 
                                             <input className="flip-card__input1" type="text" placeholder='Name of NFT' onChange={(e: any) => { setName(e.target.value) }} />
 
                                             <input className="flip-card__input1" type="text" placeholder='Description of NFT' onChange={(e) => { setDesc(e.target.value) }} />
-
-                                            
 
                                         </form>
                                         <div>
@@ -128,7 +147,7 @@ const MintPage = () => {
                                                 <span>Click to upload image</span>
                                             </div>
                                             <input type="file" accept='image/*' id="file" onChange={HandleFile} />
-                                        </label> : <><img src={Image!}  style={{ background: "#000" }}  id='imageuploaded' /></>}
+                                        </label> : <><img src={Image!} style={{ background: "#000" }} id='imageuploaded' /></>}
                                     </div>
                                 </div>
                             </label>

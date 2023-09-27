@@ -1,6 +1,6 @@
 import React from 'react'
 import '../CSS/HeroSection2.css'
-import Link from 'next/link'
+
 
 const HeroSection2 = () => {
     return (

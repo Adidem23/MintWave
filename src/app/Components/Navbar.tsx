@@ -34,15 +34,15 @@ const Navbar = () => {
 
         setClicked(true)
 
-        const { ethereum } = window;
+        // const { ethereum } = window;
 
-        const account = await ethereum.request({
+        const account = await window.ethereum.request({
             method: "eth_requestAccounts",
         });
 
         setAccount(account[0])
 
-        ethereum.on('accountsChanged', async (accountnew: string[]) => {
+        window.ethereum.on('accountsChanged', async (accountnew: string[]) => {
             setAccount(accountnew[0])
         })
 
@@ -66,7 +66,7 @@ const Navbar = () => {
                     <li><a href="#" className='Listelem d'>Services</a></li>
                     <li><a href="#" className='Listelem d'>Contact</a></li>
                     <li><a href="#" className='Listelem d'>{Clicked && <> <Jazzicon diameter={15} seed={jsNumberForAddress(`${Account}`)} /></>}</a></li>
-                    <li><a href="#" className='Listelem d'>{Clicked && <>{Account.substring(0,9)}</>}</a></li>
+                    <li><a href="#" className='Listelem d'>{Clicked && <>{Account.substring(0, 9)}</>}</a></li>
                 </ul>
 
                 <div className="toggle-switch">
