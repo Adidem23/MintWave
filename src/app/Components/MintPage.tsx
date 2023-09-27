@@ -72,18 +72,17 @@ const MintPage = () => {
 
     const { isDarkMode } = useTheme();
 
-    if (isDarkMode) {
-        const bodycard = document.querySelectorAll('.carddiv');
-        bodycard.forEach((carder) => {
-            carder.style.backgroundColor = "#B9B4C7"
-        })
-    } else {
-        const bodycard = document.querySelectorAll('.carddiv');
-        bodycard.forEach((carder) => {
-            carder.style.backgroundColor = "#ffffff"
-        })
-    }
-
+    // if (isDarkMode) {
+    //     const bodycard = document.querySelectorAll('.carddiv');
+    //     bodycard.forEach((carder) => {
+    //         carder.style.backgroundColor = "#B9B4C7"
+    //     })
+    // } else {
+    //     const bodycard = document.querySelectorAll('.carddiv');
+    //     bodycard.forEach((carder) => {
+    //         carder.style.backgroundColor = "#ffffff"
+    //     })
+    // }
 
 
     return (
@@ -129,7 +128,7 @@ const MintPage = () => {
                                                 <span>Click to upload image</span>
                                             </div>
                                             <input type="file" accept='image/*' id="file" onChange={HandleFile} />
-                                        </label> : <><img src={Image!} style={{ background: "#000" }} id='imageuploaded' /></>}
+                                        </label> : <><img src={Image!}  style={{ background: "#000" }}  id='imageuploaded' /></>}
                                     </div>
                                 </div>
                             </label>

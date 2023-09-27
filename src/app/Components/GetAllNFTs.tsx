@@ -1,7 +1,7 @@
 import React from 'react'
 import { useContract } from '@thirdweb-dev/react'
 import { useState } from 'react';
-import '../CSS/AllNFTs.css';
+import '../CSS/AllNFTS.css';
 
 const GetAllNFTs = () => {
 
