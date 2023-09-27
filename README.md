@@ -7,6 +7,8 @@ An MintWave is a software or platform that enables users to mint, or create, the
 - Thirdweb Smart Contracts and platform
 - Metamask and Wallets
 - React Context API
-- UIverse.io
+- Uiverse.io
+- Atropos Js for Parallax Effects
+- Thirdweb Hooks
 
 # Thirdweb Smart Contract : 0x78F457B69847D2E74907bb6e18EDcB14c8dfd319
