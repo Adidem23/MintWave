@@ -19,4 +19,5 @@ An MintWave is a software or platform that enables users to mint, or create, the
 https://www.loom.com/share/166f4039383842bf8d7a37ef0239106d?sid=b9150de2-2e35-4c8c-bf13-8ee346e1972b
 
 # Docker 
-- I will Provide Docker Image of this project soon . After installing that you can run the project by your side without any disturbance . 
+https://hub.docker.com/r/adidem23/mintwavecontanier
+This is the docker image of this project just go in vs code and run docker run -p 3000:3000 adidem23/mintwavecontanier this will run our mintwave on localhost:3000 hopefully!!
