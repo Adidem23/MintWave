@@ -20,4 +20,4 @@ https://www.loom.com/share/166f4039383842bf8d7a37ef0239106d?sid=b9150de2-2e35-4c
 
 # Docker 
 https://hub.docker.com/r/adidem23/mintwavecontanier
-This is the docker image of this project just go in vs code and run docker run -p 3000:3000 adidem23/mintwavecontanier this will run our mintwave on localhost:3000 hopefully!!
+This is the docker image of this project just go in vs code and run docker run -p 3000:3000 adidem23/mintwavecontanier this will run our mintwave on localhost:3000 hopefully!! . There is error in image do not use it now I will update it . 
